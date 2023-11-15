@@ -1,0 +1,57 @@
+
+
+nav {
+    background: #CE7B2F;
+    color: white;
+    width: 18%; /* Use a percentage of the available width */
+    height: 100vh; /* Use 100% of the viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+ul {
+    display: flex;
+    flex-direction: column; /* Stack the list items vertically */
+    align-items: center;
+    gap: 2rem;
+}
+
+li {
+    list-style: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Take up the remaining available space */
+    height: 100vh; /* Use 100% of the viewport height */
+}
+
+main > #level-bar {
+    background: #A2B3A3;
+    height: 10%; /* Set the level bar's height to 10% of the available height */
+}
+
+#level-bar > .profile-icon{
+    height: 90%; /* Set the width as a percentage of the container's width */
+    padding-left: 90%; /* Set the height as a percentage of the width to create a circle */
+    background-color: #3498db; /* Set your preferred background color */
+    border-radius: 50%; /* Makes it a circle */
+
+    position: relative; /* Required for positioning the image */
+    overflow: hidden; /* Clip any overflow from the image */
+}
+
+#level-bar > .profile-icon > img{
+    
+}
+
+main > #content-window {
+    background: #EEE2D2;
+    flex: 1; /* Take up the remaining available space */
+}
+

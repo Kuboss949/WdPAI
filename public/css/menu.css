@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.site-container {
+    display: flex;
+}
+
+nav {
+    width: 18%;
+    min-width: 200px;
+    background: #CE7B2F;
+    width: 18%; 
+    height: 100vh; 
+
+    display: flex;
+    flex-direction: column;
+}
+.logo-span{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-span img{
+    height: 90px;
+    /*filter:invert();*/
+}
+
+.logo-span h1{
+    font-size: 23px;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 30px;
+    flex:1;
+    position: relative;
+}
+nav ul li{
+    margin: 10px 0;
+    width: 100%;
+    height: 3em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li:last-child{
+    position: absolute;
+    bottom: 5px;
+}
+
+nav ul li img {
+    height: 100%;
+}
+nav ul li a{
+    margin-left: 10px;
+    display: block;
+    text-decoration: none;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em;
+    color:black;
+    transition-property: text-decoration;
+    transition-duration: 700ms;
+    
+}
+
+nav ul li a:hover{
+    text-decoration: underline;
+}
+
+
+main {
+    flex: 1;
+    height: 100vh; /* Use 100% of the viewport height */
+    display:flex;
+    flex-direction: column;
+}
+
+main > #level-bar {
+    background: #A2B3A3;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#progress-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+#progress-bar h2{
+    font-weight: light;
+}
+
+
+#progress-bar progress{
+    inline-size: 10em;
+    height: 20px;
+    accent-color: black;
+}
+
+#level-bar > .level-bar-edge{
+    width: 72px;
+    height: 72px;
+}
+
+#level-bar > .profile-icon{
+    
+    background: #968383;
+    border-radius: 50%; /* Makes it a circle */
+
+    position: relative; /* Required for positioning the image */
+    overflow: hidden; /* Clip any overflow from the image */
+}
+
+
+#level-bar > .profile-icon > img{
+    width: 100%; /* Ensure the image takes up the full space of the parent div */
+    height: 100%; /* Ensure the image takes up the full space of the parent div */
+    position: absolute; /* Position the image absolutely within the parent div */
+    top: 50%; /* Move the top of the image to the center vertically */
+    left: 50%; /* Move the left of the image to the center horizontally */
+    transform: translate(-50%, -50%); /* Center the image both horizontally and vertically */
+}
+
+
+
+
+
+
+
+main > #content-window {
+    background: #EEE2D2;
+    flex:1;
+}
