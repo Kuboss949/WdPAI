@@ -39,7 +39,7 @@ nav ul {
     position: relative;
 }
 nav ul li{
-    margin: 10px 0;
+    margin: 10px;
     width: 100%;
     height: 3em;
     text-align: center;
@@ -50,6 +50,10 @@ nav ul li{
 nav ul li:last-child{
     position: absolute;
     bottom: 5px;
+}
+
+nav ul li:last-child a{
+    color: #B72818;
 }
 
 nav ul li img {
@@ -140,4 +144,7 @@ main > #level-bar {
 main > #content-window {
     background: #EEE2D2;
     flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
