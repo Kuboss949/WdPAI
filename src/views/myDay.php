@@ -13,6 +13,7 @@
 <body>
     <div class="site-container">
         <nav>
+            
             <span class = "logo-span">
                 <img src = "../../public/images/logo.png">
                 <h1>NutriQuest</h1>
@@ -176,6 +177,8 @@
                         }
                     }
                 </script>
+
+                
 
 
 
