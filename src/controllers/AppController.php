@@ -1,11 +1,12 @@
 <?php
 class AppController{
     
-    protected function render(string $template = null, array $variables = []){
+    protected function render(string $template = null, array $cssNames = [], array $variables = []){
         $templatePath = 'src/views/'.$template.'.php';
         $output = 'File not found';
         if(file_exists($templatePath)){
             extract($variables);
+            extract($cssNames);
 
             ob_start();
             include $templatePath;

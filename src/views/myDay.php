@@ -1,40 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/global.css">
-    <link rel="stylesheet" href="../../public/css/menu.css">
-    <link rel="stylesheet" href="../../public/css/myday.css">
-
-
-    <title>Your Day</title>
-</head>
+<?php 
+include "components/header.php";
+?>
 <body>
     <div class="site-container">
-        <nav>
-            
-            <span class = "logo-span">
-                <img src = "../../public/images/logo.png">
-                <h1>NutriQuest</h1>
-            </span>
-            
-            <ul>
-                <li>
-                    
-                    <img src = "../../public/images/castleIcon.png">
-                    <a href="myDay">HOME</a>
-                </li>
-                <li>
-                    <img src = "../../public/images/statisticsIcon.png">
-                    <a href="myDay">STATS</a>
-                </li>
-                <li>
-                    <img src = "../../public/images/logoutIcon.png">
-                    <a href="login">LOGOUT</a>
-                </li>
-            </ul>
-        </nav>
+        <?php include "components/menu.php"; ?>
         <main>
             <div id = "level-bar">
                 <div class ="level-bar-edge"></div>
@@ -59,6 +30,7 @@
                     </span>
                 </div>
                 <table class="table">
+
                     <tr onclick="toggleRows(this)">
                         <td class="meal-row">
                             <h3>Breakfast</h3>
