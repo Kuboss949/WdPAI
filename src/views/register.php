@@ -18,18 +18,21 @@
     
     <div id="login-form">
         <h1>NutriQuest</h1>
-        <form id="login" method="POST" action="login">
+        <form id="register" method="POST" action="login">
             <div class="floating-label">
-                <label class="form-label">Login/Email</label>
+                <label class="form-label">Email</label>
+                <input class="form-field" type="text" name="email">
+            </div>
+            <div class="floating-label">
+                <label class="form-label">Login</label>
                 <input class="form-field" type="text" name="login">
             </div>
             <div class="floating-label">
                 <label class="form-label">Password</label>
                 <input class="form-field" type="password" name="password">
             </div>
-            <a id ="forgot" href="">Forgot password?</a>
-            <input type="submit" class="form-button" value="LOGIN">
-            <a href="register">&gt;&gt;Sign in&lt;&lt;</a>
+            <input type="submit" class="form-button" value="REGISTER">
+            <a id ="forgot" href="login">Alredy have an account?</a>
         </form>
     </div>
     

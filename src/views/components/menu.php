@@ -13,7 +13,7 @@
                 </li>
                 <li>
                     <img src = "../../public/images/statisticsIcon.png">
-                    <a href="myDay">STATS</a>
+                    <a href="statistics">STATS</a>
                 </li>
                 <li>
                     <img src = "../../public/images/logoutIcon.png">

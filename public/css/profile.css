@@ -1,0 +1,112 @@
+.profile-grid{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 2fr 3fr 3fr;
+    grid-column-gap: 30px;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header{
+    margin:2rem;
+}
+.change-icon{
+    display: flex;
+    flex-direction: column;
+}
+
+.change-icon > .profile-icon{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    background: #968383;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* Makes it a circle */
+    position: relative; /* Required for positioning the image */
+    overflow: hidden; /* Clip any overflow from the image */
+}
+.change-icon > .profile-icon > img{
+    width: 100%; /* Ensure the image takes up the full space of the parent div */
+    height: 100%; /* Ensure the image takes up the full space of the parent div */
+    position: absolute; /* Position the image absolutely within the parent div */
+    top: 50%; /* Move the top of the image to the center vertically */
+    left: 50%; /* Move the left of the image to the center horizontally */
+    transform: translate(-50%, -50%); /* Center the image both horizontally and vertically */
+}
+
+.section-title{
+    max-height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.section-title > img{
+    height: 100%;
+    width: auto;
+}
+
+#profile-settings-form, #goals-settings-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    width: 100%;
+}
+
+
+.form-field{
+    padding-left: 1rem;
+    height: 3rem;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid #000;
+    background-color:  #EEE2D2;
+}
+
+.floating-label{
+    position: relative;
+    margin-top:20px;
+    width: 80%;
+}
+  
+.form-label {
+    position: absolute;
+    top: 3%; /* Adjust this value to position the label where you want */
+    left: 8%;
+    font-size: 0.9rem;
+    transform: translateY(-50%);
+    background-color: #EEE2D2;
+    padding: 3px 0;
+    font-weight: light;
+    z-index: 1;
+}
+
+.form-button{
+    margin: 10px 0;
+    padding: 10px 50px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    background: linear-gradient(94deg, #B72818 2%, rgba(183, 40, 24, 0.52) 95.95%);
+    box-shadow: 10px 15px 50px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.74);
+    width: 80%;
+}
+
+.input-with-unit {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.unit {
+    position: absolute;
+    right: 10px;
+    font-size: 0.9rem;
+    color: #555; /* Adjust the color as needed */
+}
