@@ -110,3 +110,13 @@
     font-size: 0.9rem;
     color: #555; /* Adjust the color as needed */
 }
+
+@media screen and (max-width: 600px){
+    .profile-grid {
+        grid-template-columns: 1fr; /* Change to a single column layout */
+        grid-column-gap: 0; /* Remove the column gap for a vertical layout */
+    }
+    .change-icon > .profile-icon{
+        margin-top: 0;
+    }
+}

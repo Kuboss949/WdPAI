@@ -8,7 +8,7 @@ body {
 }
 
 nav {
-    width: 18%;
+    width: 18vw;
     min-width: 200px;
     background: #CE7B2F;
     height: 100vh; 
@@ -42,8 +42,7 @@ nav ul li{
     width: 100%;
     height: 3em;
     text-align: center;
-    display: flex;
-    align-items: center;
+    
 }
 
 nav ul li:last-child{
@@ -55,9 +54,12 @@ nav ul li:last-child a{
     color: #B72818;
 }
 
-nav ul li img {
+nav ul li a img {
     height: 100%;
+    width: auto;
+    margin-right:5px;
 }
+
 nav ul li a{
     margin-left: 10px;
     display: block;
@@ -68,6 +70,9 @@ nav ul li a{
     color:black;
     transition-property: text-decoration;
     transition-duration: 700ms;
+    height: 100%;
+    display: flex;
+    align-items: center;
     
 }
 
@@ -75,9 +80,12 @@ nav ul li a:hover{
     text-decoration: underline;
 }
 
+#profile-menu{
+    display: none;
+}
 
 main {
-    margin-left: 18%;
+    margin-left: 18vw;
     flex: 1;
     height: 100vh; /* Use 100% of the viewport height */
     display:flex;
@@ -135,16 +143,68 @@ main > #level-bar {
     transform: translate(-50%, -50%); /* Center the image both horizontally and vertically */
 }
 
-
-
-
-
-
-
 main > #content-window {
     background: #EEE2D2;
     flex:1;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media screen and (max-width: 600px){
+    .logo-span, nav ul li:last-child, .level-bar-edge, nav ul li a span{
+        display: none;
+    }
+    #profile-menu{
+        display: flex;
+    }
+
+    .site-container{
+        flex-direction: column;
+    }
+
+
+    nav{
+        bottom: 0;
+        left:0;
+        width: 100%;
+        position: fixed;
+        min-width: unset;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+    
+    main > #content-window{
+        margin-bottom: 80px;
+        padding-bottom: 10px;
+    }
+
+    nav ul{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0;
+        width: 100%;
+        flex:0;
+    }
+
+    nav ul li{
+        display: flex;
+        justify-content: center;
+        
+    }
+    nav ul li a, nav ul li a img{
+        margin: 0;
+        
+    }
+    
+    main{
+        margin:0;
+    }
+
+    main > #level-bar{
+        justify-content: center;
+    }
 }
