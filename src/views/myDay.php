@@ -21,11 +21,13 @@
                         </td>
                         
                     </tr>
+                    <?php foreach($variables as $product): ?> 
                     <tr class="show-me concrete-product hide-row">
-                        <td>Name</td>
-                        <td>calories</td>
+                        <td><?= $product->getName(); ?></td>
+                        <td><?= $product->getEnergeticValue(); ?></td>
                         <td>delete</td>
                     </tr>
+                    <?php endforeach; ?> 
                     <tr class="show-me add-product hide-row">
                         <td></td>
                         <td>Add Product</td>
