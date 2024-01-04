@@ -60,7 +60,7 @@ body{
     padding: 30px;
 }
 
-#login{
+#login, #register{
     display: flex;
     flex-direction: column;
     align-items: center;

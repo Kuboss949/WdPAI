@@ -23,7 +23,7 @@
         <li>
             <a href="login">    
             <img src="../../public/images/logoutIcon.png">
-            <span></span></a>
+            <span>LOGOUT</span></a>
         </li>
     </ul>
 </nav>

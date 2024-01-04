@@ -21,7 +21,7 @@
         <form id="login" method="POST" action="login">
             <div class="floating-label">
                 <label class="form-label">Login/Email</label>
-                <input class="form-field" type="text" name="login">
+                <input class="form-field" type="text" name="email">
             </div>
             <div class="floating-label">
                 <label class="form-label">Password</label>
@@ -30,6 +30,15 @@
             <a id ="forgot" href="">Forgot password?</a>
             <input type="submit" class="form-button" value="LOGIN">
             <a href="register">&gt;&gt;Sign in&lt;&lt;</a>
+            <span class="messages">
+                <?php
+                if (array_key_exists("messages", $variables)) {
+                    foreach ($variables['messages'] as $message) {
+                        echo "<div class='message'>$message</div>";
+                    }
+                }
+                ?>
+            </span>
         </form>
     </div>
     

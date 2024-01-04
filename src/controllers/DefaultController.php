@@ -20,8 +20,8 @@ class DefaultController extends AppController{
             'menu',
             'myDay',
         ];
-        $products = $this->productRepository->getProducts(); // Corrected syntax
-        $this->layout('myDay', $cssNames, $products);
+        //$products = $this->productRepository->getProducts(); // Corrected syntax
+        $this->layout('myDay', $cssNames);
     }
 
     public function search(){

@@ -18,7 +18,7 @@
     
     <div id="login-form">
         <h1>NutriQuest</h1>
-        <form id="register" method="POST" action="login">
+        <form id="register" method="POST" action="register">
             <div class="floating-label">
                 <label class="form-label">Email</label>
                 <input class="form-field" type="text" name="email">
@@ -32,7 +32,7 @@
                 <input class="form-field" type="password" name="password">
             </div>
             <input type="submit" class="form-button" value="REGISTER">
-            <a id ="forgot" href="login">Alredy have an account?</a>
+            <a href="login">Alredy have an account?</a>
         </form>
     </div>
     
