@@ -1,13 +1,16 @@
 <?php
 
 class Product {
-    public $name;
-    public $id;
-    public $energeticValue;
-    public function __construct($id, $name, $energeticValue) {
+    public int $id;
+    public string $name;
+    public array $units = [];
+
+    public function __construct($name) {
         $this->name = $name;
-        $this->id = $id;
-        $this->energeticValue= $energeticValue;
+    }
+
+    public function addUnit($unit, $calories) {
+        $this->units[$unit] = $calories;
     }
 
     // Getter and setter methods (optional)
@@ -17,17 +20,5 @@ class Product {
 
     public function setName($name) {
         $this->name = $name;
-    }
-
-    public function getID() {
-        return $this->id;
-    }
-
-    public function getEnergeticValue() {
-        return $this->energeticValue;
-    }
-
-    public function setEnergeticValue($energeticValue) {
-        $this->energeticValue = $energeticValue;
     }
 }

@@ -8,5 +8,9 @@
         <link rel="stylesheet" href="<?= '../../public/css/'.$value.'.css'; ?>">
     <?php endforeach; ?>
 
+    <?php foreach ($jsNames as $value): ?>
+        <script defer src="<?= '../../public/scripts/'.$value.'.js'; ?>"></script>
+    <?php endforeach; ?>
+
     <title><?= 'NQ '.ucfirst($template) ?></title>
 </head>

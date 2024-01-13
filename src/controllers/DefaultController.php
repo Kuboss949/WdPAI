@@ -20,17 +20,14 @@ class DefaultController extends AppController{
             'menu',
             'myDay',
         ];
+        $jsNames = [
+            'myDay'
+        ];
         //$products = $this->productRepository->getProducts(); // Corrected syntax
-        $this->layout('myDay', $cssNames);
+        $this->layout('myDay', $cssNames, $jsNames);
     }
 
-    public function search(){
-        $cssNames = [ 
-            'menu',
-            'search',
-            ];
-        $this->layout('search', $cssNames);
-    }
+
 
     public function profile(){
         $cssNames = [ 

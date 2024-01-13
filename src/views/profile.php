@@ -2,7 +2,7 @@
 <div class="profile-grid">
     <div class="change-icon flex">
         <div class = "profile-icon">
-            <img src = "../../public/images/knightProf.png">
+            <img src = "../../public/images/profilePictures/<?php echo $userObject->getImage(); ?>.png">
         </div>
         <h4>Change picture</h4>
     </div>
@@ -16,11 +16,11 @@
         <form id="profile-settings-form" method="POST" action="login">
             <div class="floating-label">
                 <label class="form-label">Username</label>
-                <input class="form-field" type="text" name="username" placeholder="U1">
+                <input value=<?php echo $userObject->getLogin(); ?> class="form-field" type="text" name="username" placeholder="U1">
             </div>
             <div class="floating-label">
                 <label class="form-label">Email</label>
-                <input class="form-field" type="text" name="email" placeholder="U1@gmail.com">
+                <input value=<?php echo $userObject->getEmail(); ?> class="form-field" type="text" name="email" placeholder="U1@gmail.com">
             </div>
             <input type="submit" class="form-button" value="Apply">
         </form>
@@ -38,14 +38,14 @@
             <div class="floating-label">
                 <label class="form-label">Height</label>
                 <div class="input-with-unit">
-                    <input class="form-field" type="text" name="height" placeholder="170">
+                    <input value=<?php echo $userObject->getHeight(); ?> class="form-field" type="text" name="height" placeholder="170">
                     <span class="unit">cm</span>
                 </div>
             </div>
             <div class="floating-label">
                 <label class="form-label">Weight</label>
                 <div class="input-with-unit">
-                    <input class="form-field" type="text" name="weight" placeholder="75">
+                    <input value=<?php echo $userObject->getWeight(); ?> class="form-field" type="text" name="weight" placeholder="75">
                     <span class="unit">kg</span>
                 </div>
             </div>

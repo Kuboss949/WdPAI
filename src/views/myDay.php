@@ -1,136 +1,67 @@
-            
-                <div class = "daily-progress">
-                    <span class = "calories-left">Calories left: 0</span>
-                    <span class = "daily-progress-bar">
-                        <img src="../../public/images/dragon.png">
-                        <img src="../../public/images/dragon.png">
-                        <img src="../../public/images/dragon.png">
-                        <img src="../../public/images/dragon.png">
-                        <img src="../../public/images/dragon.png">
+<?php
+require_once __DIR__.'/../repository/MealRepository.php';
+$mealRepository = new MealRepository();
+$mealEntries = $mealRepository->getMealsForUser($userObject->getId());
+?>
+
+<div class="daily-progress">
+    <span class="calories-left">Calories left: <span id="left"><?php echo $userObject->getCaloriesLimit(); ?></span></span>
+    <span class="daily-progress-bar">
+        <?php
+        for ($j = 0; $j < 5; $j++)
+            for ($i = 1; $i <= 4; $i++)
+                echo '<img class="gray" alt="progress-bar-img" src="../../public/images/dragon' . $i . '.png">' . PHP_EOL;
+
+        ?>
+    </span>
+</div>
+
+
+<div class="table">
+
+    <?php
+    $mealNames = ['Breakfast', 'Lunch', 'Dinner', 'Snacks', 'Supper'];
+
+    // Loop through meal names and create meal-div for each
+    foreach ($mealNames as $mealNameHeader):
+        ?>
+        <div class="meal-div">
+
+            <div class="meal-div-header">
+            <span class="meal-row">
+                <h3><?php echo $mealNameHeader; ?></h3>
+                <p>Calories: <span class="calories-summary">0</span></p>
+            </span>
+                <span>
+                <img class="arrow-img" src="../../public/images/arrows.png">
+            </span>
+            </div>
+
+            <?php foreach($mealEntries as $meal): ?>
+                <?php if (strtolower($meal->getMealName()) === strtolower($mealNameHeader)): ?>
+                    <div class="show-me product-row hide-row">
+                        <span class="entry-id"><?php echo $meal->getId(); ?></span>
+                    <span class="amount-and-name">
+                        <span class="quantity"><?php echo $meal->getAmount(); ?></span>&nbsp;
+                        <span class="unit"><?php echo $meal->getUnit(); ?></span>&nbsp;of&nbsp;
+                        <span class="product-name"><?php echo $meal->getProductName(); ?></span>
                     </span>
-                </div>
+                        <span class="calories-and-delete">
+                        <span class="calories"><?php echo $meal->getAmount() * $meal->getCalories(); ?></span>kcal
+                        <img class="delete-button" alt="delete" src="../../public/images/delete_button.svg">
+                    </span>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
 
-                <?php /*foreach($variables as $product): */?><!--
-                    <tr class="show-me concrete-product hide-row">
-                        <td><?php /*= $product->getName(); */?></td>
-                        <td><?php /*= $product->getEnergeticValue(); */?></td>
-                        <td>delete</td>
-                    </tr>
-                    --><?php /*endforeach; */?>
+            <div class="show-me add-product hide-row">
+                <a href="search" onclick="addProduct('<?php echo $mealNameHeader; ?>')">Add Product</a>
+            </div>
 
-                <table class="table">
+        </div>
 
-                    <tr onclick="toggleRows(this)">
-                        <td class="meal-row">
-                            <h3>Breakfast</h3>
-                            <p class="calories">Calories: 0</p>
-                        </td>
-                        <td>
-                            <img class="arrow-img" src = "../../public/images/arrows.png">
-                        </td>
-                        
-                    </tr>
+    <?php endforeach; ?>
+</div>
 
-                    <tr class="show-me add-product hide-row">
-                        <td></td>
-                        <td>Add Product</td>
-                        <td></td>
-                    </tr>
-                    
-                    <tr onclick="toggleRows(this)">
-                        <td class="meal-row">
-                            <h3>Lunch</h3>
-                            <p class="calories">Calories: 0</p>
-                        </td>
-                        <td>
-                            <img class="arrow-img" src = "../../public/images/arrows.png">
-                        </td>
-                    </tr>
-                    <tr class="show-me add-product hide-row">
-                        <td></td>
-                        <td>Add Product</td>
-                        <td></td>
-                    </tr>
-                    <tr onclick="toggleRows(this)">
-                        <td class="meal-row">
-                            <h3>Dinner</h3>
-                            <p class="calories">Calories: 0</p>
-                        </td>
-                        <td>
-                            <img class="arrow-img" src = "../../public/images/arrows.png">
-                        </td>
-                    </tr>
-                    <tr class="show-me add-product hide-row">
-                        <td></td>
-                        <td>Add Product</td>
-                        <td></td>
-                    </tr>
-                    <tr onclick="toggleRows(this)">
-                        <td class="meal-row">
-                            <h3>Breakfast</h3>
-                            <p class="calories">Calories: 0</p>
-                        </td>
-                        <td>
-                            <img class="arrow-img" src = "../../public/images/arrows.png">
-                        </td>
-                    </tr>
-                    <tr class="show-me add-product hide-row">
-                        <td></td>
-                        <td>Add Product</td>
-                        <td></td>
-                    </tr>
-                    <tr onclick="toggleRows(this)">
-                        <td class="meal-row">
-                            <h3>Snacks</h3>
-                            <p class="calories">Calories: 0</p>
-                        </td>
-                        <td>
-                            <img class="arrow-img" src = "../../public/images/arrows.png">
-                        </td>
-                    </tr>
-                    <tr class="show-me add-product hide-row">
-                        <td></td>
-                        <td>Add Product</td>
-                        <td></td>
-                    </tr>
-                    <tr onclick="toggleRows(this)">
-                        <td class="meal-row">
-                            <h3>Supper</h3>
-                            <p class="calories">Calories: 0</p>
-                        </td>
-                        <td>
-                            <img class="arrow-img" src = "../../public/images/arrows.png">
-                        </td>
-                    </tr>
-                    <tr class="show-me add-product hide-row">
-                        <td></td>
-                        <td>Add Product</td>
-                        <td></td>
-                    </tr>
-                    
-                </table>
-                <script>
-                    function toggleRows(element) {
-                        // Get the next element with the class 'show-me' below the clicked row
-                        const sibling = element.nextElementSibling;
-                        // Get the second td element inside the clicked row
-                        const td = element.querySelector('td:nth-child(2)');
-                        // Get the image element with the class 'arrow-img' inside the second td
-                        const img = td.querySelector('.arrow-img');
-
-                        // Check if the image element is found
-                        if (img) {
-                            // Toggle the 'rotated-image' class for the image element
-                            img.classList.toggle('rotated-image');
-                        }
-
-                        // Check if the next element has the 'show-me' class
-                        if (sibling && sibling.classList.contains('show-me')) {
-                            // Toggle the 'hide-row' class for the next element
-                            sibling.classList.toggle('hide-row');
-                            toggleRows(sibling);
-                        }
-                    }
-                </script>
             
         

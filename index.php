@@ -9,7 +9,10 @@ Routing::get('login', 'SecurityController');
 Routing::get('register', 'SecurityController');
 Routing::get('myDay', 'DefaultController');
 Routing::get('profile', 'DefaultController');
-Routing::get('search', 'DefaultController');
+Routing::get('search', 'SearchController');
+Routing::get('searchProduct', 'SearchController');
+Routing::get('addProductToMeal', 'MealController');
+Routing::get('deleteEntry', 'MealController');
 Routing::get('statistics', 'DefaultController');
 
 

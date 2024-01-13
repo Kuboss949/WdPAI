@@ -36,7 +36,9 @@ class UserRepository extends Repository
             $user['height'],
             $user['current_weight'],
             $user['weight_loss'],
-            $user['activity_level']
+            $user['activity_level'],
+            $user['sex'],
+            $user['age']
         );
     }
 

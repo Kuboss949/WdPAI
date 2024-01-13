@@ -18,6 +18,8 @@ class User implements JsonSerializable
     private string $activity;
     private string $role;
     private string $image;
+    private string $sex;
+    private int $age;
 
     /**
      * @param string $login
@@ -41,7 +43,9 @@ class User implements JsonSerializable
         int $height = 0,
         float $weight = 0.0,
         float $weightLoss = 0.0,
-        string $activity = "zero"
+        string $activity = "zero",
+        string $sex = "m",
+        int $age = 20
     ) {
         $this->id = $id;
         $this->login = $login;
@@ -56,6 +60,8 @@ class User implements JsonSerializable
         $this->role = $role;
         $this->image = $image;
         $this->exp = $exp;
+        $this->sex = $sex;
+        $this->age = $age;
     }
     public function getExp(): string
     {
@@ -186,6 +192,49 @@ class User implements JsonSerializable
     {
         $this->image = $image;
     }
+
+    public function getSex(): string
+    {
+        return $this->sex;
+    }
+
+    public function setSex(string $sex): void
+    {
+        $this->sex = $sex;
+    }
+
+    public function getAge(): int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): void
+    {
+        $this->age = $age;
+    }
+
+
+    public function getCaloriesLimit(): int
+    {
+        $sexCoefficient = $this->sex == "m" ? 5 : -161;
+        $activityRate = $this->getActivityRate();
+        return (int)((10 * $this->weight + 6.25 * $this->height - 5 * $this->age + $sexCoefficient) * $activityRate);
+    }
+
+    private function getActivityRate() :float
+    {
+        if($this->activity == "zero")
+            $result = 1.2;
+        elseif($this->activity == "low")
+            $result = 1.4;
+        elseif($this->activity == "medium")
+            $result = 1.6;
+        else
+            $result = 1.8;
+        return $result;
+
+    }
+
     public function jsonSerialize(): array
     {
         return [

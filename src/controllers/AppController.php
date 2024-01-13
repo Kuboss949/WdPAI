@@ -33,13 +33,14 @@ class AppController{
         print $output;
     }
 
-    protected function layout(string $template = null, array $cssNames = [], array $variables = []){
+    protected function layout(string $template = null, array $cssNames = [], array $jsNames = [], array $variables = []){
         $layoutPath = 'src/views/components/layout.php';
         $templatePath = 'src/views/'.$template.'.php';
         $output = 'File not found';
         if(file_exists($templatePath)){
             extract($variables);
             extract($cssNames);
+            extract($jsNames);
 
             ob_start();
             include $layoutPath;

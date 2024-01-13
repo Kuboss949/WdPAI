@@ -134,7 +134,7 @@ main > #level-bar {
 }
 
 
-#level-bar > .profile-icon > img{
+#level-bar > .profile-icon > a > img{
     width: 100%; /* Ensure the image takes up the full space of the parent div */
     height: 100%; /* Ensure the image takes up the full space of the parent div */
     position: absolute; /* Position the image absolutely within the parent div */
