@@ -45,6 +45,15 @@ services:
     networks:
       - pg-network
 
+  pgagent:
+    build:
+      context: .
+      dockerfile: docker/pgagent/Dockerfile
+    depends_on:
+      - db
+    networks:
+      - pg-network
+
 networks:
   pg-network:
 

@@ -21,15 +21,6 @@ class User implements JsonSerializable
     private string $sex;
     private int $age;
 
-    /**
-     * @param string $login
-     * @param string $email
-     * @param string $password
-     * @param int $height
-     * @param float $weight
-     * @param float $weightLoss
-     * @param ActivityEnum $activity
-     */
     public function __construct(
         int $id,
         string $login,
@@ -163,12 +154,12 @@ class User implements JsonSerializable
         $this->weightLoss = $weightLoss;
     }
 
-    public function getActivity(): int
+    public function getActivity(): string
     {
         return $this->activity;
     }
 
-    public function setActivity(ActivityEnum $activity): void
+    public function setActivity(string $activity): void
     {
         $this->activity = $activity;
     }
@@ -218,7 +209,10 @@ class User implements JsonSerializable
     {
         $sexCoefficient = $this->sex == "m" ? 5 : -161;
         $activityRate = $this->getActivityRate();
-        return (int)((10 * $this->weight + 6.25 * $this->height - 5 * $this->age + $sexCoefficient) * $activityRate);
+        $deficit = $this->calculateDeficit();
+        $result =(int)((10 * $this->weight + 6.25 * $this->height - 5 * $this->age + $sexCoefficient) * $activityRate - $deficit);
+
+        return $result > 0 ? $result : 0;
     }
 
     private function getActivityRate() :float
@@ -233,6 +227,13 @@ class User implements JsonSerializable
             $result = 1.8;
         return $result;
 
+    }
+
+    private function calculateDeficit(): float
+    {
+        $targetWeightLoss = $this->weightLoss * 0.1;
+        $deficitPerKg = 1000;
+        return $targetWeightLoss * $deficitPerKg;
     }
 
     public function jsonSerialize(): array
@@ -251,6 +252,40 @@ class User implements JsonSerializable
             'activity' => $this->activity,
             'role' => $this->role,
             'image' => $this->image,
+            'sex' => $this->sex,
+            'age' => $this->age
         ];
+    }
+
+    public static function getUserFromCookie(): User{
+        $userBase64 = $_COOKIE['user_data'];
+        $userJson = base64_decode($userBase64);
+
+        $user = json_decode($userJson, true);
+
+        return new User(
+            $user['id'],
+            $user['login'],
+            $user['email'],
+            $user['password'],
+            $user['salt'],
+            $user['level'],
+            $user['exp'],
+            $user['image'],
+            $user['role'],
+            $user['height'],
+            $user['weight'],
+            $user['weightLoss'],
+            $user['activity'],
+            $user['sex'],
+            $user['age']
+        );
+    }
+
+    public static function saveUserToCookie($user): void
+    {
+        $userJson = json_encode($user);
+        $userBase64 = base64_encode($userJson);
+        setcookie('user_data', $userBase64, time() + (86400 * 30), "/");
     }
 }

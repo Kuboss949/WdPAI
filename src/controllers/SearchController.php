@@ -30,6 +30,11 @@ class SearchController extends AppController
             ];
             $this->layout('search', $cssNames, $jsNames, $variables);
         }
+        else
+        {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/myDay");
+        }
 
     }
 

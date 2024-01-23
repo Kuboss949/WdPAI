@@ -158,6 +158,9 @@ main > #content-window {
     #profile-menu{
         display: flex;
     }
+    #admin-panel{
+        display: none;
+    }
 
     .site-container{
         flex-direction: column;

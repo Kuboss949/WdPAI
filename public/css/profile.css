@@ -111,6 +111,12 @@
     color: #555; /* Adjust the color as needed */
 }
 
+.messages{
+    color: #b41111;
+}
+
+
+
 @media screen and (max-width: 600px){
     .profile-grid {
         grid-template-columns: 1fr; /* Change to a single column layout */
@@ -118,5 +124,8 @@
     }
     .change-icon > .profile-icon{
         margin-top: 0;
+    }
+    .flex{
+        width: 90vw;
     }
 }

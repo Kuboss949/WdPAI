@@ -8,12 +8,15 @@ $path = parse_url($path, PHP_URL_PATH);
 Routing::get('login', 'SecurityController');
 Routing::get('register', 'SecurityController');
 Routing::get('myDay', 'DefaultController');
-Routing::get('profile', 'DefaultController');
+Routing::get('profile', 'ProfileController');
 Routing::get('search', 'SearchController');
 Routing::get('searchProduct', 'SearchController');
 Routing::get('addProductToMeal', 'MealController');
 Routing::get('deleteEntry', 'MealController');
 Routing::get('statistics', 'DefaultController');
+Routing::get('administrationPanel', 'AdministrationController');
+Routing::get('deleteUser', 'AdministrationController');
+
 
 
 Routing::run($path);

@@ -34,6 +34,7 @@ class AppController{
     }
 
     protected function layout(string $template = null, array $cssNames = [], array $jsNames = [], array $variables = []){
+        if(isset($_COOKIE['user_data'])){
         $layoutPath = 'src/views/components/layout.php';
         $templatePath = 'src/views/'.$template.'.php';
         $output = 'File not found';
@@ -47,5 +48,12 @@ class AppController{
             $output = ob_get_clean();
         }
         print $output;
+        }
+        else
+        {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
+
     }
 }

@@ -1,14 +1,13 @@
-# Your Web Application Project Name
+# NutriQuest
 
 ## Overview
 
-Briefly describe your web application and its main purpose. Explain what problem it solves or what it aims to achieve.
+Calorie counting app kept in fantasy style, providing gamification elements.
 
 ## Table of Contents
 
 - [Features](#features)
 - [Demo](#demo)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
@@ -16,24 +15,34 @@ Briefly describe your web application and its main purpose. Explain what problem
 
 ## Features
 
-List the key features and functionalities of your web application.
 
-- Feature 1
-- Feature 2
-- Feature 3
-- ...
+- Calculates user's caloric needs
+- Provides clear UI for adding and deleting consumed products
+- Includes gamification mechanisms: levels and awards
+- Weight change monitor
+- Fully editable user profile
 
 ## Demo
 
-Include a link to a live demo of your web application (if available) or provide screenshots and videos to showcase its functionality.
+TODO: Zamieścić screeny z aplikacji jak będzie na githubie
 
-## Installation
+## Usage
 
-Explain how to set up and install your web application locally. Include any prerequisites, step-by-step instructions, and configuration details.
+TODO
 
-```bash
-# Example installation steps
-git clone https://github.com/yourusername/your-web-app.git
-cd your-web-app
-npm install
-npm start
+## Technologies Used
+
+- Docker
+- HTML
+- CSS
+- PHP 8
+- PostgreSQL
+- JavaScript
+  - Chart.js
+
+## Contributing
+
+TODO
+
+## License
+

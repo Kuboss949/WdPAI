@@ -4,6 +4,8 @@ require_once __DIR__ . '/src/controllers/DefaultController.php';
 require_once __DIR__ . '/src/controllers/SecurityController.php';
 require_once __DIR__ . '/src/controllers/SearchController.php';
 require_once __DIR__ . '/src/controllers/MealController.php';
+require_once __DIR__ . '/src/controllers/ProfileController.php';
+require_once __DIR__ . '/src/controllers/AdministrationController.php';
 
 class Routing{
     public static $routes = [];

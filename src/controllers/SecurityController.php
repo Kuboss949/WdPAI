@@ -18,7 +18,7 @@ class SecurityController extends AppController{
             return $this->render('login');
         }
 
-        $email = $_POST['email'];
+        $email = $_POST['login'];
 
         $user = $this->userRepository->getUser($email);
 
@@ -33,10 +33,8 @@ class SecurityController extends AppController{
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-        $userJson = json_encode($user);
-        $userBase64 = base64_encode($userJson);
 
-        setcookie('user_data', $userBase64, time() + (86400 * 30), "/");
+        User::saveUserToCookie($user);
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/myDay");
     }
@@ -49,13 +47,24 @@ class SecurityController extends AppController{
         $email = $_POST['email'];
         $login = $_POST['login'];
         $password = $_POST['password'];
+        if($this->userRepository->userWithLoginExists($login)){
+            return $this->render('register', ['messages' => ['User with such email already exists!']]);
+        }
+        elseif($this->userRepository->userWithEmailExists($email)) {
+            return $this->render('register', ['messages' => ['User with such login already exists!']]);
+        }
+
         $randomSalt = bin2hex(random_bytes(16));
         $hashedPassword = password_hash($randomSalt.$password, PASSWORD_BCRYPT);
 
-        $user = new User(0, $login, $email, $hashedPassword, $randomSalt, 1,  "knight", 2);
+        $user = new User(0, $login, $email, $hashedPassword, $randomSalt, 1,0, "knight", 2);
 
         $this->userRepository->addUser($user);
 
         return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
+
+
+
+
 }

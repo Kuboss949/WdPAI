@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/login.css">
+    <link rel="stylesheet" href="../../public/css/form.css">
     <link rel="stylesheet" href="../../public/css/global.css">
+    <script defer type="module"  src="../../public/scripts/validationFunctions.js"></script>
+    <script defer type="module"  src="../../public/scripts/loginValidation.js"></script>
     <title>LOGIN</title>
 </head>
 <body>
@@ -21,15 +24,13 @@
         <form id="login" method="POST" action="login">
             <div class="floating-label">
                 <label class="form-label">Login/Email</label>
-                <input class="form-field" type="text" name="email">
+                <input class="form-field" type="text" name="login">
             </div>
             <div class="floating-label">
                 <label class="form-label">Password</label>
                 <input class="form-field" type="password" name="password">
             </div>
             <a id ="forgot" href="">Forgot password?</a>
-            <input type="submit" class="form-button" value="LOGIN">
-            <a href="register">&gt;&gt;Sign in&lt;&lt;</a>
             <span class="messages">
                 <?php
                 if (array_key_exists("messages", $variables)) {
@@ -39,6 +40,9 @@
                 }
                 ?>
             </span>
+            <input type="submit" class="form-button" value="LOGIN">
+            <a href="register">&gt;&gt;Sign in&lt;&lt;</a>
+
         </form>
     </div>
     
