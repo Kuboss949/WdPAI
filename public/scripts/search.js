@@ -5,27 +5,29 @@ searchInput.addEventListener('input', function () {
 
 const productContainer = document.querySelector(".table");
 
-function search() {
-    const query = searchInput.value.toLocaleLowerCase();
+async function search() {
+    try {
+        const query = searchInput.value.toLowerCase();
 
-    fetch("/searchProduct", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ search: query })
-    }).then(function (response) {
+        const response = await fetch("/searchProduct", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ search: query })
+        });
+
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
-        //console.log(response);
-        return response.json();
-    }).then(function (products) {
+
+        const products = await response.json();
         productContainer.innerHTML = "";
-        loadProducts(products)
-    }).catch(function (error) {
+        loadProducts(products);
+
+    } catch (error) {
         console.error("There was a problem with the fetch operation:", error.message);
-    });
+    }
 }
 
 function loadProducts(products) {
@@ -48,19 +50,12 @@ function createProduct(product) {
     const unitSelect = clone.querySelector(".unit");
     unitSelect.innerHTML = "";
     if (product.units) {
-        // CO SIĘ DZIEJE?
-        //console.log("<<<<<<<<<")
-        //console.log(product)
         for (const unit in product.units) {
-            //console.log("-------")
-            //console.log(unit);
-            //console.log("-------")
             const option = document.createElement("option");
             option.value = product.units[unit] + unit;
             option.text = `${unit} - ${product.units[unit]} kcal`;
             unitSelect.appendChild(option);
         }
-        //console.log("<<<<<<<<<")
     }
     const amountInput = clone.querySelector(".amount");
 
@@ -85,14 +80,13 @@ function validateInput(inputElement) {
     inputElement.value = inputElement.value.replace(/\D/g, '');
 }
 
-function addProductToMeal(element, id, meal){
+async function addProductToMeal(element, id, meal) {
     const product = element.parentNode.parentNode;
     const productName = product.querySelector('.name').innerHTML;
     const productAmount = product.querySelector('.amount').value;
     const productUnit = extractName(product.querySelector('.unit').value);
 
-
-    if(productAmount != "" && productAmount != 0){
+    if (productAmount !== "" && productAmount !== 0) {
         const productData = {
             userID: id,
             name: productName,
@@ -100,22 +94,24 @@ function addProductToMeal(element, id, meal){
             unit: productUnit,
             meal: meal
         };
-        console.log(productData);
-        fetch("/addProductToMeal", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({productData: productData})
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Odpowiedź z serwera:', data);
-            })
-            .catch(error => {
-                console.error('Błąd podczas wysyłania danych na serwer:', error);
+
+        try {
+            console.log(productData);
+
+            const response = await fetch("/addProductToMeal", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ productData: productData })
             });
 
+            const data = await response.json();
+            console.log('Odpowiedź z serwera:', data);
+
+        } catch (error) {
+            console.error('Błąd podczas wysyłania danych na serwer:', error);
+        }
     }
 }
 

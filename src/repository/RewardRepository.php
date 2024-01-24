@@ -24,7 +24,7 @@ class RewardRepository extends Repository
 
 
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo "Application error, please try again later";
         }
 
         return $rewards;
@@ -50,7 +50,7 @@ class RewardRepository extends Repository
 
 
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo "Application error, please try again later";
         }
 
         return $images;

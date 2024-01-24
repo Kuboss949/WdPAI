@@ -9,10 +9,9 @@ pageData.forEach(function (record) {
     data.push(weight);
 });
 
-// Calculate the minimum value from the data
+
 var minYValue = Math.min(...data);
 
-// Utwórz wykres
 var ctx = document.querySelector('#chart').getContext('2d');
 var weightChart = new Chart(ctx, {
     type: 'line',

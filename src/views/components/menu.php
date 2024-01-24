@@ -22,7 +22,7 @@ $userObject = User::getUserFromCookie();
         if($userObject->getRole()=="admin"): ?>
             <li id="admin-panel">
                 <a href="administrationPanel">
-                    <img src="../../public/images/statisticsIcon.png">
+                    <img src="../../public/images/gearIcon.png">
                     <span>PANEL</span></a>
             </li>
         <?php endif; ?>

@@ -33,6 +33,8 @@
                     <span class="award-desc">
                         <?php if($reward->getRequiredLevel() > $userObject->getLevel()):?>
                         <img alt = "lock" src="../../public/images/lock.svg">
+                        <?php else: ?>
+                        <p> <?php echo $reward->getContent() ?></p><br>
                         <?php endif; ?>
                         <p>Level: <?php echo $reward->getRequiredLevel(); ?></p>
                     </span>

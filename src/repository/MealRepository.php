@@ -44,7 +44,7 @@ class MealRepository extends Repository
                 $meals[] = $meal;
             }
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo "Application error, please try again later";
         }
         return $meals;
     }
@@ -107,8 +107,8 @@ class MealRepository extends Repository
                     WHERE entry_id = :id');
             $stmt->bindParam(':id', $id, PDO::PARAM_STR);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if($result){
+            $rowCount = $stmt->rowCount();
+            if($rowCount > 0){
                 return array('status' => 'success', 'message' => 'Wpis został usunięty.');
             }else{
                 return array('error' => 'Nie udało się usunąć wpisu');
@@ -116,10 +116,6 @@ class MealRepository extends Repository
         } catch (PDOException $e) {
             return array('error' => 'Błąd podczas komunikacji z bazą danych: ' . $e->getMessage());
         }
-
-
-
-
 
     }
 

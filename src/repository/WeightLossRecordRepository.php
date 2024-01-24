@@ -21,7 +21,7 @@ class WeightLossRecordRepository extends Repository
             }
 
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo "Application error, please try again later";
         }
 
         return $records;
@@ -56,7 +56,7 @@ class WeightLossRecordRepository extends Repository
             $stmt->execute();
 
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo "Application error, please try again later";
         }
 
     }

@@ -8,9 +8,9 @@ arrowButtons.forEach(button => {
         toggleRows(button);
     });
 });
-deleteButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        deleteEntry(button);
+deleteButtons.forEach(async button => {
+    button.addEventListener('click', async () => {
+        await deleteEntry(button);
         reloadCalories();
         updateProgressBar();
     });
@@ -36,27 +36,27 @@ function addProduct(mealName){
     document.cookie = "meal_name=" + mealName + "; expires=" + expirationDate.toUTCString() + "; path=/";
 }
 
-function deleteEntry(element){
+async function deleteEntry(element) {
     const entry = element.parentNode.parentNode;
     const entryId = entry.querySelector('.entry-id').innerHTML;
 
-
-    fetch("/deleteEntry", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({id: entryId})
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Odpowiedź z serwera:', data);
-        })
-        .catch(error => {
-            console.error('Błąd podczas wysyłania danych na serwer:', error);
+    try {
+        const response = await fetch("/deleteEntry", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: entryId })
         });
-    entry.remove();
 
+        const data = await response.json();
+        console.log('Odpowiedź z serwera:', data);
+
+    } catch (error) {
+        console.error('Błąd podczas wysyłania danych na serwer:', error);
+    }
+
+    entry.remove();
 }
 
 function reloadCalories(){

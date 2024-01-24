@@ -38,8 +38,8 @@ class ProductRepository extends Repository
                 $products[$productName]->addUnit($unitName, $calories);
             }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
+            echo "Application error, please try again later";
+        }
         return $products;
     }
 
