@@ -1,4 +1,4 @@
-<div id = "header">
+<div id="header">
     Administration Panel
 </div>
 
@@ -11,11 +11,10 @@
         <span class="row-element">Role</span>
         <span class="row-element">
             Delete
-<!--            <img src="../../public/images/delete_button.svg">-->
         </span>
     </div>
 
-    <?php foreach($variables['users'] as $user):?>
+    <?php foreach ($variables['users'] as $user): ?>
         <div class="user-row">
             <span class="row-element"><?php echo $user->getId(); ?></span>
             <span class="row-element"><?php echo $user->getLogin(); ?></span>
@@ -28,7 +27,7 @@
         </div>
 
 
-    <?php endforeach;?>
+    <?php endforeach; ?>
 
 
 </div>

@@ -10,16 +10,16 @@ $userObject = User::getUserFromCookie();
     <ul>
         <li>
             <a href="myDay">
-            <img src="../../public/images/castleIcon.png">
-            <span>HOME</span></a>
+                <img src="../../public/images/castleIcon.png">
+                <span>HOME</span></a>
         </li>
         <li>
             <a href="statistics">
-            <img src="../../public/images/statisticsIcon.png">
-            <span>STATS</span></a>
+                <img src="../../public/images/statisticsIcon.png">
+                <span>STATS</span></a>
         </li>
         <?php
-        if($userObject->getRole()=="admin"): ?>
+        if ($userObject->getRole() == "admin"): ?>
             <li id="admin-panel">
                 <a href="administrationPanel">
                     <img src="../../public/images/gearIcon.png">
@@ -33,8 +33,8 @@ $userObject = User::getUserFromCookie();
         </li>
         <li>
             <a href="login" id="logout">
-            <img src="../../public/images/logoutIcon.png">
-            <span>LOGOUT</span></a>
+                <img src="../../public/images/logoutIcon.png">
+                <span>LOGOUT</span></a>
         </li>
     </ul>
 </nav>

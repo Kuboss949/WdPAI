@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__.'/AppController.php';
-require_once __DIR__.'/../models/Product.php';
-require_once __DIR__.'/../repository/ProductRepository.php';
+require_once __DIR__ . '/AppController.php';
+require_once __DIR__ . '/../models/Product.php';
+require_once __DIR__ . '/../repository/ProductRepository.php';
 
 
 class SearchController extends AppController
@@ -16,8 +16,9 @@ class SearchController extends AppController
         $this->productRepository = new ProductRepository();
     }
 
-    public function search(){
-        if(isset($_COOKIE['meal_name'])) {
+    public function search()
+    {
+        if (isset($_COOKIE['meal_name'])) {
             $cssNames = [
                 'menu',
                 'search'
@@ -26,19 +27,18 @@ class SearchController extends AppController
                 'search'
             ];
             $variables = [
-              $_COOKIE['meal_name']
+                $_COOKIE['meal_name']
             ];
             $this->layout('search', $cssNames, $jsNames, $variables);
-        }
-        else
-        {
+        } else {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/myDay");
         }
 
     }
 
-    public function searchProduct(){
+    public function searchProduct()
+    {
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
         if ($contentType === "application/json") {
             $content = trim(file_get_contents("php://input"));
@@ -50,7 +50,6 @@ class SearchController extends AppController
             echo json_encode($this->productRepository->getProductsByName($decoded['search']));
         }
     }
-
 
 
 }

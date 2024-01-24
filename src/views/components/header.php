@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="../../public/css/global.css">
 
     <?php foreach ($cssNames as $value): ?>
-        <link rel="stylesheet" href="<?= '../../public/css/'.$value.'.css'; ?>">
+        <link rel="stylesheet" href="<?= '../../public/css/' . $value . '.css'; ?>">
     <?php endforeach; ?>
 
     <script defer src="../../public/scripts/logout.js"></script>
@@ -25,5 +25,5 @@
         ?>
         <script defer type="<?= $scriptType ?>" src="<?= $scriptPath ?>"></script>
     <?php endforeach; ?>
-    <title><?= 'NQ '.ucfirst($template) ?></title>
+    <title><?= 'NQ ' . ucfirst($template) ?></title>
 </head>

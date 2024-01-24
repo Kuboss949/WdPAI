@@ -1,8 +1,9 @@
 <?php
 
-require_once __DIR__.'/AppController.php';
-require_once __DIR__.'/../models/MealEntry.php';
-require_once __DIR__.'/../repository/MealRepository.php';
+require_once __DIR__ . '/AppController.php';
+require_once __DIR__ . '/../models/MealEntry.php';
+require_once __DIR__ . '/../repository/MealRepository.php';
+
 class MealController extends AppController
 {
     private MealRepository $mealRepository;

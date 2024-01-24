@@ -1,11 +1,12 @@
 <?php
-require_once __DIR__.'/../repository/MealRepository.php';
+require_once __DIR__ . '/../repository/MealRepository.php';
 $mealRepository = new MealRepository();
 $mealEntries = $mealRepository->getMealsForUser($userObject->getId());
 ?>
 
 <div class="daily-progress">
-    <span class="calories-left">Calories left: <span id="left"><?php echo $userObject->getCaloriesLimit(); ?></span></span>
+    <span class="calories-left">Calories left: <span
+                id="left"><?php echo $userObject->getCaloriesLimit(); ?></span></span>
     <span class="daily-progress-bar">
         <?php
         for ($j = 0; $j < 5; $j++)
@@ -37,11 +38,11 @@ $mealEntries = $mealRepository->getMealsForUser($userObject->getId());
             </span>
             </div>
 
-            <?php foreach($mealEntries as $meal): ?>
+            <?php foreach ($mealEntries as $meal): ?>
                 <?php if (strtolower($meal->getMealName()) === strtolower($mealNameHeader)): ?>
                     <div class="show-me product-row hide-row">
                         <span class="entry-id"><?php echo $meal->getId(); ?></span>
-                    <span class="amount-and-name">
+                        <span class="amount-and-name">
                         <span class="quantity"><?php echo $meal->getAmount(); ?></span>&nbsp;
                         <span class="unit"><?php echo $meal->getUnit(); ?></span>&nbsp;of&nbsp;
                         <span class="product-name"><?php echo $meal->getProductName(); ?></span>

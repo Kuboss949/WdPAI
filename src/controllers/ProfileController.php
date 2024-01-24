@@ -1,10 +1,11 @@
 <?php
-require_once __DIR__.'/AppController.php';
-require_once __DIR__.'/../models/User.php';
-require_once __DIR__.'/../repository/UserRepository.php';
-require_once __DIR__.'/../repository/RewardRepository.php';
+require_once __DIR__ . '/AppController.php';
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../repository/UserRepository.php';
+require_once __DIR__ . '/../repository/RewardRepository.php';
 
-class ProfileController extends AppController{
+class ProfileController extends AppController
+{
 
     private UserRepository $userRepository;
     private RewardRepository $rewardRepository;
@@ -34,11 +35,10 @@ class ProfileController extends AppController{
         if (isset($_POST['updateProfile'])) {
             $newLogin = isset($_POST['login']) ? htmlspecialchars($_POST['login']) : '';
             $newEmail = isset($_POST['email']) ? filter_var($_POST['email'], FILTER_SANITIZE_EMAIL) : '';
-            if($newLogin != $userObject->getLogin() && $this->userRepository->userWithLoginExists($newLogin)){
-                return $this->layout('profile', $cssNames, $jsNames,  ['messages' => ['User with such login already exists!'], 'images' => $images]);
-            }
-            elseif($newEmail != $userObject->getEmail() && $this->userRepository->userWithEmailExists($newEmail)){
-                return $this->layout('profile', $cssNames, $jsNames,  ['messages' => ['User with such email already exists!', 'images' => $images]]);
+            if ($newLogin != $userObject->getLogin() && $this->userRepository->userWithLoginExists($newLogin)) {
+                return $this->layout('profile', $cssNames, $jsNames, ['messages' => ['User with such login already exists!'], 'images' => $images]);
+            } elseif ($newEmail != $userObject->getEmail() && $this->userRepository->userWithEmailExists($newEmail)) {
+                return $this->layout('profile', $cssNames, $jsNames, ['messages' => ['User with such email already exists!', 'images' => $images]]);
             }
 
             $this->updateUserProfile($newLogin, $newEmail, $userObject);
@@ -48,7 +48,7 @@ class ProfileController extends AppController{
             $weight = isset($_POST['weight']) ? floatval($_POST['weight']) : 0.0;
             $age = isset($_POST['age']) ? intval($_POST['age']) : 0;
             $sex = isset($_POST['sex']) ? htmlspecialchars($_POST['sex']) : '';
-            $activity = isset($_POST['weekly-activity']) ? htmlspecialchars($_POST['weekly-activity']) : '';
+            $activity = isset($_POST['weekly-activity']) ? htmlspecialchars($_POST['weekly-activity']) : 'zero';
             $weightLoss = isset($_POST['weight-loss']) ? floatval($_POST['weight-loss']) : 0.0;
 
             $this->updateUserGoals($image, $height, $weight, $age, $sex, $weightLoss, $activity, $userObject);

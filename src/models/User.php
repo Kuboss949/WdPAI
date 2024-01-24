@@ -1,7 +1,6 @@
 <?php
 
 
-
 class User implements JsonSerializable
 {
 
@@ -22,22 +21,23 @@ class User implements JsonSerializable
     private int $age;
 
     public function __construct(
-        int $id,
+        int    $id,
         string $login,
         string $email,
         string $password,
         string $salt,
-        int $level = 1,
-        int $exp = 0,
+        int    $level = 1,
+        int    $exp = 0,
         string $image = "knight",
         string $role = "user",
-        int $height = 0,
-        float $weight = 0.0,
-        float $weightLoss = 0.0,
+        int    $height = 0,
+        float  $weight = 0.0,
+        float  $weightLoss = 0.0,
         string $activity = "zero",
         string $sex = "m",
-        int $age = 20
-    ) {
+        int    $age = 20
+    )
+    {
         $this->id = $id;
         $this->login = $login;
         $this->email = $email;
@@ -54,10 +54,12 @@ class User implements JsonSerializable
         $this->sex = $sex;
         $this->age = $age;
     }
+
     public function getExp(): string
     {
         return $this->exp;
     }
+
     public function setExp(string $exp): void
     {
         $this->exp = $exp;
@@ -210,18 +212,18 @@ class User implements JsonSerializable
         $sexCoefficient = $this->sex == "m" ? 5 : -161;
         $activityRate = $this->getActivityRate();
         $deficit = $this->calculateDeficit();
-        $result =(int)((10 * $this->weight + 6.25 * $this->height - 5 * $this->age + $sexCoefficient) * $activityRate - $deficit);
+        $result = (int)((10 * $this->weight + 6.25 * $this->height - 5 * $this->age + $sexCoefficient) * $activityRate - $deficit);
 
         return $result > 0 ? $result : 0;
     }
 
-    private function getActivityRate() :float
+    private function getActivityRate(): float
     {
-        if($this->activity == "zero")
+        if ($this->activity == "zero")
             $result = 1.2;
-        elseif($this->activity == "low")
+        elseif ($this->activity == "low")
             $result = 1.4;
-        elseif($this->activity == "medium")
+        elseif ($this->activity == "medium")
             $result = 1.6;
         else
             $result = 1.8;
@@ -257,7 +259,8 @@ class User implements JsonSerializable
         ];
     }
 
-    public static function getUserFromCookie(): User{
+    public static function getUserFromCookie(): User
+    {
         $userBase64 = $_COOKIE['user_data'];
         $userJson = base64_decode($userBase64);
 

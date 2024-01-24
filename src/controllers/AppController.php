@@ -1,5 +1,7 @@
 <?php
-class AppController{
+
+class AppController
+{
 
     private $request;
 
@@ -19,10 +21,11 @@ class AppController{
     }
 
 
-    protected function render(string $template = null, array $variables = []){
-        $templatePath = 'src/views/'.$template.'.php';
+    protected function render(string $template = null, array $variables = [])
+    {
+        $templatePath = 'src/views/' . $template . '.php';
         $output = 'File not found';
-        if(file_exists($templatePath)){
+        if (file_exists($templatePath)) {
             extract($variables);
 
             ob_start();
@@ -33,24 +36,23 @@ class AppController{
         print $output;
     }
 
-    protected function layout(string $template = null, array $cssNames = [], array $jsNames = [], array $variables = []){
-        if(isset($_COOKIE['user_data'])){
-        $layoutPath = 'src/views/components/layout.php';
-        $templatePath = 'src/views/'.$template.'.php';
-        $output = 'File not found';
-        if(file_exists($templatePath)){
-            extract($variables);
-            extract($cssNames);
-            extract($jsNames);
+    protected function layout(string $template = null, array $cssNames = [], array $jsNames = [], array $variables = [])
+    {
+        if (isset($_COOKIE['user_data'])) {
+            $layoutPath = 'src/views/components/layout.php';
+            $templatePath = 'src/views/' . $template . '.php';
+            $output = 'File not found';
+            if (file_exists($templatePath)) {
+                extract($variables);
+                extract($cssNames);
+                extract($jsNames);
 
-            ob_start();
-            include $layoutPath;
-            $output = ob_get_clean();
-        }
-        print $output;
-        }
-        else
-        {
+                ob_start();
+                include $layoutPath;
+                $output = ob_get_clean();
+            }
+            print $output;
+        } else {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/login");
         }

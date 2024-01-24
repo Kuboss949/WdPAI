@@ -1,4 +1,3 @@
-
 <div id="level-bar">
     <div class="level-bar-edge"></div>
     <div id="progress-bar">
@@ -6,7 +5,8 @@
         <progress max="100" value= <?php echo $userObject->getExp() ?>></progress>
     </div>
     <div class="profile-icon level-bar-edge">
-        <a href="profile"><img alt="profile-image" src="../../public/images/profilePictures/<?php echo $userObject->getImage(); ?>.png"></a>
+        <a href="profile"><img alt="profile-image"
+                               src="../../public/images/profilePictures/<?php echo $userObject->getImage(); ?>.png"></a>
     </div>
 
 </div>
