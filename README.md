@@ -37,7 +37,9 @@ Calorie counting app kept in fantasy style, providing gamification elements.
 
 ## Usage
 
-TODO
+https://github.com/Kuboss949/WdPAI/assets/101654879/5a300ff2-a2d6-4f1e-8aca-d961eb75598c
+
+
 
 ## Technologies Used
 
