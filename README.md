@@ -10,6 +10,7 @@ Calorie counting app kept in fantasy style, providing gamification elements.
 - [Demo](#demo)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
+- [Database ERD](#erd)
 - [Installation](#installation)
 - [Contributing](#contributing)
 - [License](#license)
@@ -51,6 +52,12 @@ https://github.com/Kuboss949/WdPAI/assets/101654879/5a300ff2-a2d6-4f1e-8aca-d961
 - PostgreSQL
 - JavaScript
   - Chart.js
+
+
+## ERD
+
+
+![alt text](https://github.com/Kuboss949/WdPAI/blob/Database/demo/erd.png?raw=true)
 
 ## Installation
 
